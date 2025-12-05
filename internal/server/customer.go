@@ -6,7 +6,6 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// todo почему возвращает только error ?
 func (s *EchoServer) GetAllCustomers(ctx echo.Context) error {
 	email := ctx.QueryParam("email")
 

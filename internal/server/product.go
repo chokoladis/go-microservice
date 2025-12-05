@@ -7,7 +7,8 @@ import (
 )
 
 func (s *EchoServer) GetAllProducts(ctx echo.Context) error {
-	products, err := s.DB.GetAllProducts(ctx.Request().Context())
+
+	products, err := s.DB.GetAllProducts(ctx.Request().Context(),  ctx.QueryParams())
 	if (err != nil) {
 		return ctx.JSON(http.StatusInternalServerError, err)
 	}

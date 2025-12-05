@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/fpmoles/go-microservices/internal/models"
+	// "github.com/google/uuid"
 )
 
 func (c Client) GetAllCustomers(ctx context.Context, emailAddress string)  ([]models.Customer, error){
@@ -14,3 +15,13 @@ func (c Client) GetAllCustomers(ctx context.Context, emailAddress string)  ([]mo
 
 	return customers, result.Error 
 }
+
+// func (c Client) AddCustomer(ctx context.Context, customer *models.Customer) ([]models.Customer, error) {
+// 	customer.CustomerId = uuid.NewString()
+// 	result := c.DB.WithContext(ctx).
+// 		Create(&customer)
+
+// 	// if result.Error != nil {
+// 	// 	return nil, result.Error
+
+// }

@@ -13,6 +13,7 @@
 2. add customer //product, vendor, service
 3. added data validator for add models
 4. update customers
+5. delete customers
 
 ---
 <br>
@@ -34,3 +35,4 @@
 2. Добавление клиентов //продуктов, производителей, сервисов
 3. Добавлен валидатор данных для добавления моделей
 4. Обновление клиентов
+5. Удаление клиентов

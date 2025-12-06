@@ -16,11 +16,20 @@ type DatabaseClient interface {
 	Ready() bool
 
 	GetAllCustomers(ctx context.Context, emailAddress string)  ([]models.Customer, error)
+	GetCustomerById(ctx context.Context, id string) (*models.Customer, error)
+
 	AddCustomer(ctx context.Context, customer *models.Customer) (*models.Customer, error) 
+	UpdateCustomer(ctx context.Context, customer *models.Customer) (*models.Customer, error)
+	DeleteCustomer(ctx context.Context, id string) error
 
 	GetAllProducts(ctx context.Context, params url.Values) ([]models.Product, error)
+	// todo
+
 	GetAllVendors(ctx context.Context) ([]models.Vendor, error)
+	// todo
+
 	GetAllServices(ctx context.Context) ([]models.Service, error)
+	// todo
 }
 
 type Client struct {

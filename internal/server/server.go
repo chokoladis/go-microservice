@@ -17,6 +17,7 @@ type Server interface {
 	Liveness(ctx echo.Context) error
 
 	GetAllCustomers(ctx echo.Context) error
+	GetCustomerById(ctx echo.Context) error 
 	AddCustomer(ctx echo.Context) error
 
 	GetAllProducts(ctx echo.Context) error
@@ -60,7 +61,10 @@ func (s *EchoServer) registerRoutes() {
 
 	cg := s.echo.Group("/customers")
 	cg.GET("", s.GetAllCustomers)
+	cg.GET("/:id", s.GetCustomerById)
 	cg.POST("", s.AddCustomer)
+	cg.PUT("/:id", s.UpdateCustomer)
+	cg.DELETE("/:id", s.DeleteCustomer)
 
 	productGroup := s.echo.Group("/products")
 	productGroup.GET("", s.GetAllProducts)

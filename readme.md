@@ -6,6 +6,13 @@ Workplace course from linkedin
 
 ## Todo list
 
+- crud entities
+
+### middlewares:
+- auth
+- admin (create,upd,delete)
+- throttling and logger (about throttling)
+
 ---
 
 ## Ready
@@ -23,6 +30,13 @@ Workplace course from linkedin
 ```
 
 ## Сделать
+
+- crud сущностей
+
+### middlewares:
+- аутентификации
+- админа (создание, обновления, удаления)
+- ограничения кол-ва запросов и логгер (для кол-ва запросов)
 
 ---
 

@@ -2,6 +2,6 @@ package dberrors
 
 type ConflictError struct{}
 
-func Error(e ConflictError) string {
+func (e *ConflictError) Error() string {
 	return "error create record"
 }

@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  title: Go Microservice API
+  version: "1.0.0"
+  description: Minimal OpenAPI spec for the microservice (customers, products, vendors, services)
+servers:
+  - url: http://localhost:8080
+paths:
+  /customers:
+    get:
+      summary: Get all customers (optionally filter by emailAddress)
+      parameters:
+        - name: emailAddress
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '500':
+          description: Internal server error
+    post:
+      summary: Create a new customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+  /products:
+    get:
+      summary: Get all products
+      parameters:
+        - name: vendorId
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: min_price
+          in: query
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /vendors:
+    get:
+      summary: Get all vendors
+      responses:
+        '200':
+          description: List of vendors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vendor'
+  /services:
+    get:
+      summary: Get all services
+      responses:
+        '200':
+          description: List of services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+components:
+  schemas:
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        address:
+          type: string
+    Product:
+      type: object
+      properties:
+        productId:
+          type: string
+        name:
+          type: string
+        vendorId:
+          type: string
+        price:
+          type: number
+    Vendor:
+      type: object
+      properties:
+        vendorId:
+          type: string
+        name:
+          type: string
+    Service:
+      type: object
+      properties:
+        serviceId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
